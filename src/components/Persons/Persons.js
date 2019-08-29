@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import Person from './Person/Person';
-import { truncateSync } from 'fs';
-
 
 class Persons extends Component {
 
@@ -13,11 +11,12 @@ class Persons extends Component {
     shouldComponentUpdate(nextProps, nextState){
         console.log('[Persons.js] shouldComponentUpdate');
 
-        if(nextProps.persons !== this.props.persons) {
-            return true;
-        }else {
-            return false;
-        }
+        // if( nextProps.persons !== this.props.persons ) {
+        //     return true;
+        // }else {
+        //     return false;
+        // }
+        return true;
     }
 
     getSnapshotBeforeUpdate() {
@@ -43,6 +42,7 @@ class Persons extends Component {
                 age     = {person.age} 
                 click   = {() => this.props.clicked(index)}
                 changed = {(event) => this.props.changed(event, person.id)}
+                isAuth  = {this.props.isAuthenticated}
             />
         });
     }
@@ -52,7 +52,6 @@ export default Persons;
 
 // import React from 'react';
 // import Person from './Person/Person';
-
 
 // const persons = (props) => 
 // {
